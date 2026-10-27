@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --brand-primary: #2563eb;
-  --brand-accent: #7c3aed;
-  --brand-neutral: #64748b;
-  --brand-radius: 0.5rem;
-  --brand-font-heading: system-ui, sans-serif;
-  --brand-font-body: system-ui, sans-serif;
+  --brand-primary: #1a1a1a;
+  --brand-accent: #00a36c;
+  --brand-neutral: #5c5c5c;
+  --brand-radius: 0.125rem;
+  --brand-font-heading: IBM Plex Mono;
+  --brand-font-body: Source Serif 4;
   --brand-surface: #ffffff;
   --brand-border: #e2e8f0;
   --brand-fg: #0f172a;
