@@ -3,115 +3,230 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start narrative -->
-### DEV-PLAN-1 · approved · source: plan:v1
+### DEV-PLAN-001 · approved · source: plan:v1
 
-Development plan version 1 is approved, organizing the full backlog into 5 sprints of 20-point capacity each, progressing from authentication and initial indexing through to multi-turn chat with history.
+Development Plan version 1 is approved and organizes the project into 5 sprints (capacity 20 points each) across 4 epics and 13 stories.
 
-Plan status: approved, version 1. Five sprints, each capacity=20 points: Sprint 1 (login + initial S3-to-index pipeline), Sprint 2 (end-to-end auth enforcement + multi-format text/metadata extraction), Sprint 3 (indexing status visibility + hybrid retrieval + Bedrock-grounded answers), Sprint 4 (source citations + streaming chat UI), Sprint 5 (multi-turn follow-up context + conversation history view). Backlog comprises 4 epics (EPIC-001..004) and stories US-001 through US-013, several decomposed into subtasks.
+Plan status: approved, version 1. Sprint breakdown: Sprint 1 -- staff login and initial S3-to-index pipeline (chunking, embedding, hybrid index population); Sprint 2 -- enforce authenticated-only access end to end and extract text/metadata from all supported file types; Sprint 3 -- expose indexing status, implement hybrid keyword+semantic retrieval, and generate Bedrock-grounded answers; Sprint 4 -- add source citations and ship the streaming chat interface; Sprint 5 -- add multi-turn follow-up context and a conversation history view. Backlog is structured as 4 epics (EPIC-001..EPIC-004) containing 13 stories (US-001..US-013), with 3 stories (US-004, US-008, US-011) further broken into implementation tasks.
 
 **Related:** US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-012, US-013
 
-- ⚠ No record of who approved the plan or when.
-- ⚠ No actual sprint execution status (in-progress/done) reported -- only planned goals.
-- ⚠ No linkage yet to test or deployment evidence confirming any sprint's work was completed.
+- ⚠ No evidence of actual code commits, pull requests, or completion status for any sprint/item -- this entry documents planned scope only.
+- ⚠ Input does not explicitly assign each backlog item to a sprint; sprint-to-item relationships in this documentation are inferred from matching sprint goal wording to story titles and should be confirmed.
 
-### DEV-SPRINT-1 · approved · source: plan:Sprint 1
+### SPRINT-1 · approved · source: plan:Sprint 1
 
-Sprint 1 targets standing up staff login and building the initial S3-to-index pipeline (listing/retrieval, chunking, embedding, hybrid index population).
+Sprint 1 goal is to stand up staff login and build the initial S3-to-index pipeline (chunking, embedding, hybrid index population).
 
-Goal: Stand up staff login and build the initial S3-to-index pipeline (chunking, embedding, hybrid index population). Capacity: 20 points. Planned work: US-001 Log in with email and password (5 pts, security-agent); US-004 Build the document index from the S3 bucket (13 pts, backend-agent) via subtasks US-004-T1 Implement S3 bucket listing and file retrieval, US-004-T2 Implement chunking and Bedrock embedding pipeline, US-004-T3 Populate pgvector and Meilisearch indexes from processed chunks, US-004-T4 Implement indexing_runs status tracking and persistence.
+Capacity: 20 points. Goal: 'Stand up staff login and build the initial S3-to-index pipeline (chunking, embedding, hybrid index population).' Inferred associated stories: US-001 (log in with email and password) and US-004 (build the document index from the S3 bucket, including its tasks T1 S3 listing/retrieval, T2 chunking + Bedrock embedding, T3 pgvector/Meilisearch population).
 
 **Related:** US-001, US-004
 
-- ⚠ No confirmation these items were actually completed within Sprint 1 -- plan only states the goal and assignment.
-- ⚠ US-004-T4 builds status persistence here, but exposing that status (US-007) is planned for Sprint 3 -- sequencing dependency not explicitly confirmed.
+- ⚠ Sprint goal does not explicitly list item IDs; association with US-001 and US-004 is inferred from wording, not stated directly in the input.
 
-### DEV-SPRINT-2 · approved · source: plan:Sprint 2
+### SPRINT-2 · approved · source: plan:Sprint 2
 
-Sprint 2 targets enforcing authenticated-only access end to end and extracting text/metadata from all supported file types.
+Sprint 2 goal is to enforce authenticated-only access end to end and extract text/metadata from all supported file types.
 
-Goal: Enforce authenticated-only access end to end and extract text/metadata from all supported file types. Capacity: 20 points. Planned work: US-002 Restrict access to authenticated staff only (5 pts, security-agent); US-003 Query any document without per-document restrictions (2 pts, qa-agent); US-005 Extract text from document files (8 pts, backend-agent); US-006 Extract text and metadata from structured files (5 pts, backend-agent).
+Capacity: 20 points. Goal: 'Enforce authenticated-only access end to end and extract text/metadata from all supported file types.' Inferred associated stories: US-002 (restrict access to authenticated staff only), US-005 (extract text from document files), US-006 (extract text and metadata from structured files).
 
-**Related:** US-002, US-003, US-005, US-006
+**Related:** US-002, US-005, US-006
 
-- ⚠ No confirmation of completion -- plan only states the goal and assignment.
-- ⚠ No list of which file types/formats are 'all supported file types' provided in this input.
+- ⚠ Sprint goal does not explicitly list item IDs; association with US-002, US-005, US-006 is inferred from wording.
 
-### DEV-SPRINT-3 · approved · source: plan:Sprint 3
+### SPRINT-3 · approved · source: plan:Sprint 3
 
-Sprint 3 targets exposing indexing status, implementing hybrid keyword+semantic retrieval, and generating Bedrock-grounded answers.
+Sprint 3 goal is to expose indexing status, implement hybrid keyword+semantic retrieval, and generate Bedrock-grounded answers.
 
-Goal: Expose indexing status, implement hybrid keyword+semantic retrieval, and generate Bedrock-grounded answers. Capacity: 20 points. Planned work: US-007 Monitor indexing status (5 pts, backend-agent); US-008 Hybrid retrieval over the document index (8 pts, backend-agent) via subtasks US-008-T1 Implement keyword search query against Meilisearch, US-008-T2 Implement semantic vector search against pgvector using Titan embeddings, US-008-T3 Implement result merging and relevance ranking; US-009 Generate answers grounded in retrieved chunks (5 pts, backend-agent).
+Capacity: 20 points. Goal: 'Expose indexing status, implement hybrid keyword+semantic retrieval, and generate Bedrock-grounded answers.' Inferred associated stories: US-007 (monitor indexing status), US-008 (hybrid retrieval over the document index, including tasks T1 Meilisearch keyword search, T2 pgvector semantic search with Titan embeddings, T3 result merging/ranking), US-009 (generate answers grounded in retrieved chunks).
 
 **Related:** US-007, US-008, US-009
 
-- ⚠ No confirmation of completion -- plan only states the goal and assignment.
-- ⚠ No detail given on the ranking algorithm or merge weighting used in US-008-T3.
+- ⚠ Sprint goal does not explicitly list item IDs; association with US-007, US-008, US-009 is inferred from wording.
 
-### DEV-SPRINT-4 · approved · source: plan:Sprint 4
+### SPRINT-4 · approved · source: plan:Sprint 4
 
-Sprint 4 targets adding source citations to answers and shipping the streaming chat interface staff interact with.
+Sprint 4 goal is to add source citations and ship the streaming chat interface staff interact with.
 
-Goal: Add source citations and ship the streaming chat interface staff interact with. Capacity: 20 points. Planned work: US-010 Show source citations with each answer (5 pts, backend-agent); US-011 Ask questions in a chat interface (13 pts, backend-agent) via subtasks US-011-T1 Implement streaming chat endpoints (backend-agent), US-011-T2 Build React chat UI with message input and display (frontend-agent), US-011-T3 Implement live token streaming rendering (frontend-agent), US-011-T4 Implement responsive layout for tablet and mobile browsers (frontend-agent).
+Capacity: 20 points. Goal: 'Add source citations and ship the streaming chat interface staff interact with.' Inferred associated stories: US-010 (show source citations with each answer), US-011 (ask questions in a chat interface, including tasks T1 streaming chat endpoints, T2 React chat UI with message input/display, T3 live token streaming rendering, T4 responsive layout for tablet/mobile).
 
 **Related:** US-010, US-011
 
-- ⚠ No confirmation of completion -- plan only states the goal and assignment.
-- ⚠ No design artifact referenced for the chat UI's visual layout (relies on React implementation tasks only).
+- ⚠ Sprint goal does not explicitly list item IDs; association with US-010 and US-011 is inferred from wording.
 
-### DEV-SPRINT-5 · approved · source: plan:Sprint 5
+### SPRINT-5 · approved · source: plan:Sprint 5
 
-Sprint 5 targets adding multi-turn follow-up context handling and a conversation history view.
+Sprint 5 goal is to add multi-turn follow-up context and a conversation history view.
 
-Goal: Add multi-turn follow-up context and a conversation history view. Capacity: 20 points. Planned work: US-012 Multi-turn follow-up context (5 pts, backend-agent); US-013 View conversation history (3 pts, frontend-agent).
+Capacity: 20 points. Goal: 'Add multi-turn follow-up context and a conversation history view.' Inferred associated stories: US-012 (multi-turn follow-up context), US-013 (view conversation history).
 
 **Related:** US-012, US-013
 
-- ⚠ No confirmation of completion -- plan only states the goal and assignment.
-- ⚠ No detail on how much conversational context (turn count/window) is retained.
+- ⚠ Sprint goal does not explicitly list item IDs; association with US-012 and US-013 is inferred from wording.
 
 ### EPIC-001 · approved · source: plan:EPIC-001
 
-Epic covering staff authentication and access control: login, enforcing authenticated-only access, and unrestricted querying across all documents once authenticated.
+Epic covering staff authentication and access control for the chatbot.
 
-Epic: Staff Authentication and Access Control (no points/role assigned at epic level). Child stories: US-001 Log in with email and password (5 pts, security-agent, Sprint 1); US-002 Restrict access to authenticated staff only (5 pts, security-agent, Sprint 2); US-003 Query any document without per-document restrictions (2 pts, qa-agent, Sprint 2).
+EPIC-001 'Staff Authentication and Access Control' has no points or assigned role itself (epic-level grouping). Contains three stories: US-001 (log in with email and password, security-agent, 5 pts), US-002 (restrict access to authenticated staff only, security-agent, 5 pts), US-003 (query any document without per-document restrictions, qa-agent, 2 pts).
 
 **Related:** US-001, US-002, US-003
 
-- ⚠ No acceptance criteria or auth mechanism (e.g. password policy, session handling) detailed in this input.
-- ⚠ No confirmation these stories were implemented or tested.
+### US-001 · approved · source: plan:US-001
+
+Story: staff log in with email and password.
+
+Points: 5. Assigned role: security-agent. Part of EPIC-001 (Staff Authentication and Access Control). Thematically placed in Sprint 1 per that sprint's goal of standing up staff login.
+
+**Related:** EPIC-001, SPRINT-1
+
+- ⚠ No implementation or test status provided for this story yet.
+
+### US-002 · approved · source: plan:US-002
+
+Story: restrict access to authenticated staff only.
+
+Points: 5. Assigned role: security-agent. Part of EPIC-001. Thematically placed in Sprint 2 per that sprint's goal of enforcing authenticated-only access end to end.
+
+**Related:** EPIC-001, SPRINT-2
+
+- ⚠ No implementation or test status provided for this story yet.
+
+### US-003 · approved · source: plan:US-003
+
+Story: authenticated staff can query any document without per-document restrictions.
+
+Points: 2. Assigned role: qa-agent. Part of EPIC-001 (Staff Authentication and Access Control).
+
+**Related:** EPIC-001
+
+- ⚠ This story is not clearly mapped to any of the 5 sprint goals in the input; sprint assignment is undetermined.
+- ⚠ No implementation or test status provided for this story yet.
 
 ### EPIC-002 · approved · source: plan:EPIC-002
 
-Epic covering building and maintaining the document index from the S3 bucket, including text/metadata extraction and indexing status monitoring.
+Epic covering document indexing of the S3 bucket contents.
 
-Epic: Document Indexing from the S3 Bucket (no points/role assigned at epic level). Child stories: US-004 Build the document index from the S3 bucket (13 pts, backend-agent, Sprint 1) with subtasks US-004-T1 S3 bucket listing and file retrieval, US-004-T2 chunking and Bedrock embedding pipeline, US-004-T3 populate pgvector and Meilisearch indexes, US-004-T4 indexing_runs status tracking and persistence; US-005 Extract text from document files (8 pts, backend-agent, Sprint 2); US-006 Extract text and metadata from structured files (5 pts, backend-agent, Sprint 2); US-007 Monitor indexing status (5 pts, backend-agent, Sprint 3), which exposes the status US-004-T4 persists.
+EPIC-002 'Document Indexing from the S3 Bucket' has no points or assigned role itself. Contains stories: US-004 (build the document index from S3, 13 pts, backend-agent), US-005 (extract text from document files, 8 pts, backend-agent), US-006 (extract text and metadata from structured files, 5 pts, backend-agent), US-007 (monitor indexing status, 5 pts, backend-agent).
 
 **Related:** US-004, US-005, US-006, US-007
 
-- ⚠ No list of specific supported document/file formats given.
-- ⚠ No confirmation of implementation or indexing throughput/performance.
-- ⚠ Relationship between US-004-T4 (persistence, Sprint 1) and US-007 (exposure, Sprint 3) is inferred from goals, not explicitly stated as a dependency in the input.
+### US-004 · approved · source: plan:US-004
+
+Story: build the document index from the S3 bucket.
+
+Points: 13. Assigned role: backend-agent. Part of EPIC-002, thematically placed in Sprint 1. Broken into 4 tasks: T1 -- implement S3 bucket listing and file retrieval; T2 -- implement chunking and Bedrock embedding pipeline; T3 -- populate pgvector and Meilisearch indexes from processed chunks; T4 -- implement indexing_runs status tracking and persistence (this task also underpins US-007's indexing status monitoring).
+
+**Related:** EPIC-002, SPRINT-1, US-004-T1, US-004-T2, US-004-T3, US-004-T4
+
+- ⚠ No implementation or test status provided for this story or its 4 tasks yet.
+
+### US-005 · approved · source: plan:US-005
+
+Story: extract text from document files.
+
+Points: 8. Assigned role: backend-agent. Part of EPIC-002, thematically placed in Sprint 2 per that sprint's goal of extracting text/metadata from all supported file types.
+
+**Related:** EPIC-002, SPRINT-2
+
+- ⚠ No implementation or test status provided for this story yet.
+- ⚠ Input does not enumerate which document file types are supported.
+
+### US-006 · approved · source: plan:US-006
+
+Story: extract text and metadata from structured files.
+
+Points: 5. Assigned role: backend-agent. Part of EPIC-002, thematically placed in Sprint 2 alongside US-005.
+
+**Related:** EPIC-002, SPRINT-2
+
+- ⚠ No implementation or test status provided for this story yet.
+- ⚠ Input does not enumerate which structured file formats are supported.
+
+### US-007 · approved · source: plan:US-007
+
+Story: monitor indexing status.
+
+Points: 5. Assigned role: backend-agent. Part of EPIC-002, thematically placed in Sprint 3 per that sprint's goal of exposing indexing status. Relies on the indexing_runs tracking implemented under US-004-T4.
+
+**Related:** EPIC-002, SPRINT-3, US-004-T4
+
+- ⚠ No implementation or test status provided for this story yet.
 
 ### EPIC-003 · approved · source: plan:EPIC-003
 
-Epic covering hybrid keyword+semantic retrieval over the index and generating Bedrock-grounded answers with source citations.
+Epic covering hybrid retrieval and grounded answer generation.
 
-Epic: Hybrid Retrieval and Grounded Answer Generation (no points/role assigned at epic level). Child stories: US-008 Hybrid retrieval over the document index (8 pts, backend-agent, Sprint 3) with subtasks US-008-T1 keyword search against Meilisearch, US-008-T2 semantic vector search against pgvector using Titan embeddings, US-008-T3 result merging and relevance ranking; US-009 Generate answers grounded in retrieved chunks (5 pts, backend-agent, Sprint 3); US-010 Show source citations with each answer (5 pts, backend-agent, Sprint 4).
+EPIC-003 'Hybrid Retrieval and Grounded Answer Generation' has no points or assigned role itself. Contains stories: US-008 (hybrid retrieval over the document index, 8 pts, backend-agent), US-009 (generate answers grounded in retrieved chunks, 5 pts, backend-agent), US-010 (show source citations with each answer, 5 pts, backend-agent).
 
 **Related:** US-008, US-009, US-010
 
-- ⚠ No detail on which Bedrock model generates answers.
-- ⚠ No confirmation of implementation, retrieval accuracy, or citation correctness.
+### US-008 · approved · source: plan:US-008
+
+Story: hybrid retrieval over the document index.
+
+Points: 8. Assigned role: backend-agent. Part of EPIC-003, thematically placed in Sprint 3. Broken into 3 tasks: T1 -- implement keyword search query against Meilisearch; T2 -- implement semantic vector search against pgvector using Titan embeddings; T3 -- implement result merging and relevance ranking.
+
+**Related:** EPIC-003, SPRINT-3, US-008-T1, US-008-T2, US-008-T3
+
+- ⚠ No implementation or test status provided for this story or its 3 tasks yet.
+
+### US-009 · approved · source: plan:US-009
+
+Story: generate answers grounded in retrieved chunks.
+
+Points: 5. Assigned role: backend-agent. Part of EPIC-003, thematically placed in Sprint 3 per that sprint's goal of generating Bedrock-grounded answers. Depends on retrieval results produced by US-008.
+
+**Related:** EPIC-003, SPRINT-3, US-008
+
+- ⚠ No implementation or test status provided for this story yet.
+- ⚠ Input does not specify which Bedrock model is used for generation.
+
+### US-010 · approved · source: plan:US-010
+
+Story: show source citations with each answer.
+
+Points: 5. Assigned role: backend-agent. Part of EPIC-003, thematically placed in Sprint 4. Builds on grounded-answer generation from US-009.
+
+**Related:** EPIC-003, SPRINT-4, US-009
+
+- ⚠ No implementation or test status provided for this story yet.
 
 ### EPIC-004 · approved · source: plan:EPIC-004
 
-Epic covering the chat experience: the streaming chat interface, multi-turn follow-up context, and conversation history view.
+Epic covering the chat experience and conversation history.
 
-Epic: Chat Experience and Conversation History (no points/role assigned at epic level). Child stories: US-011 Ask questions in a chat interface (13 pts, backend-agent, Sprint 4) with subtasks US-011-T1 streaming chat endpoints (backend-agent), US-011-T2 React chat UI with message input/display (frontend-agent), US-011-T3 live token streaming rendering (frontend-agent), US-011-T4 responsive layout for tablet/mobile (frontend-agent); US-012 Multi-turn follow-up context (5 pts, backend-agent, Sprint 5); US-013 View conversation history (3 pts, frontend-agent, Sprint 5).
+EPIC-004 'Chat Experience and Conversation History' has no points or assigned role itself. Contains stories: US-011 (ask questions in a chat interface, 13 pts, backend-agent), US-012 (multi-turn follow-up context, 5 pts, backend-agent), US-013 (view conversation history, 3 pts, frontend-agent).
 
 **Related:** US-011, US-012, US-013
 
-- ⚠ No confirmation of implementation or UI screenshots/designs referenced in this input.
-- ⚠ No detail on how far back conversation history is retained or where it is stored.
+### US-011 · approved · source: plan:US-011
+
+Story: ask questions in a chat interface.
+
+Points: 13. Assigned role: backend-agent (overall story), with frontend-agent handling UI tasks. Part of EPIC-004, thematically placed in Sprint 4. Broken into 4 tasks: T1 -- implement streaming chat endpoints (backend-agent); T2 -- build React chat UI with message input and display (frontend-agent); T3 -- implement live token streaming rendering (frontend-agent); T4 -- implement responsive layout for tablet and mobile browsers (frontend-agent).
+
+**Related:** EPIC-004, SPRINT-4, US-011-T1, US-011-T2, US-011-T3, US-011-T4
+
+- ⚠ No implementation or test status provided for this story or its 4 tasks yet.
+
+### US-012 · approved · source: plan:US-012
+
+Story: multi-turn follow-up context in conversations.
+
+Points: 5. Assigned role: backend-agent. Part of EPIC-004, thematically placed in Sprint 5. Depends on the chat interface from US-011.
+
+**Related:** EPIC-004, SPRINT-5, US-011
+
+- ⚠ No implementation or test status provided for this story yet.
+
+### US-013 · approved · source: plan:US-013
+
+Story: view conversation history.
+
+Points: 3. Assigned role: frontend-agent. Part of EPIC-004, thematically placed in Sprint 5.
+
+**Related:** EPIC-004, SPRINT-5
+
+- ⚠ No implementation or test status provided for this story yet.
 <!-- sdlc:auto:end narrative -->

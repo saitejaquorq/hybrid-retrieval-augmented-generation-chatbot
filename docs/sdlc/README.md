@@ -15,7 +15,7 @@ Hybrid Retrieval Augmented Generation chatbot for a small organization with mass
 |---|---|
 | [Requirements](requirements/README.md) | v2 approved |
 | [Architecture](architecture/README.md) | 17 entries |
-| [Development](development/README.md) | 10 entries |
+| [Development](development/README.md) | 23 entries |
 | [Testing](testing/README.md) | 1 entry |
 | [Deployment](deployment/README.md) | 1 entry |
 | [Maintenance](maintenance/README.md) | 1 entry |
@@ -50,25 +50,20 @@ Hybrid Retrieval Augmented Generation chatbot for a small organization with mass
 
 ### Development
 
-- No record of who approved the plan or when.
-- No actual sprint execution status (in-progress/done) reported -- only planned goals.
-- No linkage yet to test or deployment evidence confirming any sprint's work was completed.
-- No confirmation these items were actually completed within Sprint 1 -- plan only states the goal and assignment.
-- US-004-T4 builds status persistence here, but exposing that status (US-007) is planned for Sprint 3 -- sequencing dependency not explicitly confirmed.
-- No confirmation of completion -- plan only states the goal and assignment.
-- No list of which file types/formats are 'all supported file types' provided in this input.
-- No detail given on the ranking algorithm or merge weighting used in US-008-T3.
-- No design artifact referenced for the chat UI's visual layout (relies on React implementation tasks only).
-- No detail on how much conversational context (turn count/window) is retained.
-- No acceptance criteria or auth mechanism (e.g. password policy, session handling) detailed in this input.
-- No confirmation these stories were implemented or tested.
-- No list of specific supported document/file formats given.
-- No confirmation of implementation or indexing throughput/performance.
-- Relationship between US-004-T4 (persistence, Sprint 1) and US-007 (exposure, Sprint 3) is inferred from goals, not explicitly stated as a dependency in the input.
-- No detail on which Bedrock model generates answers.
-- No confirmation of implementation, retrieval accuracy, or citation correctness.
-- No confirmation of implementation or UI screenshots/designs referenced in this input.
-- No detail on how far back conversation history is retained or where it is stored.
+- No evidence of actual code commits, pull requests, or completion status for any sprint/item -- this entry documents planned scope only.
+- Input does not explicitly assign each backlog item to a sprint; sprint-to-item relationships in this documentation are inferred from matching sprint goal wording to story titles and should be confirmed.
+- Sprint goal does not explicitly list item IDs; association with US-001 and US-004 is inferred from wording, not stated directly in the input.
+- Sprint goal does not explicitly list item IDs; association with US-002, US-005, US-006 is inferred from wording.
+- Sprint goal does not explicitly list item IDs; association with US-007, US-008, US-009 is inferred from wording.
+- Sprint goal does not explicitly list item IDs; association with US-010 and US-011 is inferred from wording.
+- Sprint goal does not explicitly list item IDs; association with US-012 and US-013 is inferred from wording.
+- No implementation or test status provided for this story yet.
+- This story is not clearly mapped to any of the 5 sprint goals in the input; sprint assignment is undetermined.
+- No implementation or test status provided for this story or its 4 tasks yet.
+- Input does not enumerate which document file types are supported.
+- Input does not enumerate which structured file formats are supported.
+- No implementation or test status provided for this story or its 3 tasks yet.
+- Input does not specify which Bedrock model is used for generation.
 
 ### Testing
 
